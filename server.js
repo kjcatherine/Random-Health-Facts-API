@@ -70,16 +70,13 @@ app.get("/", (request, response) => {
 });
 
 //Api route
-// app.get("/api/:name", (request, response) => {
-//   const factCheck = request.params.name.toLowerCase();
-//   if (healthFacts[factCheck]) {
-//     response.json(healthFacts[factCheck]);
-//   } else {
-//     response.json(healthFacts["0"]);
-//   }
-// });
-app.get("/api", (request, response) => {
-  response.json(healthFacts);
+app.get("/api/:name", (request, response) => {
+  const factCheck = request.params.name.toLowerCase();
+  if (healthFacts[factCheck]) {
+    response.json(healthFacts[factCheck]);
+  } else {
+    response.json(healthFacts["0"]);
+  }
 });
 
 app.listen(process.env.PORT || PORT, () => {
